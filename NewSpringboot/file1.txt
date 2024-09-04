@@ -1,0 +1,69 @@
+﻿
+
+Bank
+- accounts: LinkedHashMap <Long, Account> [1]
++ Bank(
+- getAccount( in accountNumber: Long): Account
++ openCommercialAccount( in company: Company, in pin: int, in startingDeposit: double): Long
++ openConsumerAccount( in person: Person, in pin: int, in starting Deposit: double): Long
++ authenticateUser( in accountNumber: Long, in pin: int): boolean
++ getBalance( in accountNumber: Long): double
++ credit( in accountNumber: Long, in amount: double)
++ debit in accountNumber: Long, in amount: double): boolean
+Person
+- firstName: String [1]
+- lastName: String [1]
++ Person( in firstName: String, in lastName: String, in idNumber: int) + getFirstName(): String
+Company
+- companyName: String [1]
+Company in companyName: String, in taxld: int)
++ getCompanyName(): String
++ getLastName(): String
+<DataType>>
+LinkedHashMap <Long, Account>
+accountNumber: Long [1]
+- bank: Bank [1]
+Transaction
++ Transaction( in bank: Bank, in accountNumber: Long, in attemptedPin: int) + getBalance0): double
++ credit in amount: double)
++ debit in amount: double): boolean
+<<Interface>> BankInterface
++ openCommercial Account( in company: Company, in pin: int, in starting Deposit: double): Long
++ openConsumerAccount( in person: Person, in pin: int, in startingDeposit: double): Long
++ authenticateUser( in accountNumber: Long, in pin: int): boolean
++ getBalance( in accountNumber: Long): double
++ credit( accountNumber: Long, in amount: double)
++ debit in accountNumber: Long, in amount: double): boolean
+ConsumerAccount
++ ConsumerAccount( in person: Person, in accountNumber: Long, in pin: int, in currentBalance: double)
+- authorizedUsers: Person [1..*]
+CommercialAccount
++ Commercial Account( in company: Company, in accountNumber: Long, in pin: int, in starting Deposit: double) # addAuthorizedUser( in person: Person)
++ isAuthorizedUser( in person: Person): boolean
+AccountHolder
+- idNumber: int [1]
++ AccountHolder( in idNumber: int) +getldNumber0: int
+<<Interface»
+TransactionInterface
++getBalance(): double
++ credit in amount: double)
++ debit in amount: double): boolean
+- accountHolder: AccountHolder [1]
+- accountNumber: Long [1]
+- pin: int [1]
+Account
+- balance: double [1]
+# Account( in accountHolder: AccountHolder, in account Number: Long, in pin: int, in startingDeposit: double)
++ getAccountHolder(): AccountHolder
++ validatePin( in attemptedPin: int): boolean
++ getBalance0): double
++ getAccountNumber(): Long
++ creditAccount(in amount: double)
++ debitAccount( in amount: double): boolean
+<<Interface>> AccountInterface
++ getAccountHolder(): AccountHolder
++ validatePin( in attemptedPin: int): boolean
++ getBalance(): double
++ getAccountNumber(): Long
+creditAccount( in amount: double)
++ debitAccount( in amount: double): boolean
